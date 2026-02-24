@@ -1,7 +1,11 @@
 import { error } from '@sveltejs/kit';
-import { modules } from '$lib/data/modules.js';
+const endpoint = "http://localhost:3000/modules";
 
-export function load({ params }) {
+export const load = async ({ params }) => {
+    // get all modukles
+    const response = await fetch(endpoint);
+    const modules = await response.json();
+
     let moduleCode = params.modulecode;
 
     const module = modules.find(module =>

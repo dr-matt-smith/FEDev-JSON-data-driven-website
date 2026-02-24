@@ -495,17 +495,17 @@ The SvelteKit documentations pages (https://svelte.dev/tutorial/kit/page-data) s
 1. Rendering
    - generating HTML/CSS (and/or perhaps updating the DOM)
 
-We've been doing the data loading in the `<script>` part of our Svelte pages. However, SveltKit best practice says that we should be creating JavaScript `+page.js` files, to load the appropraite data for each route.
+We've been doing the data loading in the `<script>` part of our Svelte pages. However, SveltKit best practice says that we should be creating JavaScript `+page.server.js` files, to load the appropraite data for each route.
 
 We have 2 routes needed data:
 - `/modules`
 - `/modules/[moduleCode]`
 
-So we should have 2 `+page.js` files:
-- `/modules/+page.js`
-- `/modules/[moduleCode]/+page.js`
+So we should have 2 `+page.server.js` files:
+- `/modules/+page.server.js`
+- `/modules/[moduleCode]/+page.server.js`
 
-So, first, let's load our list of modules for the module list page using a new script `/modules/+page.js`:
+So, first, let's load our list of modules for the module list page using a new script `/modules/+page.server.js`:
 
 ```javascript
 import { modules } from '$lib/data/modules.js';
@@ -555,7 +555,7 @@ As we can see, we read in the data from the JavaScript `load()` function by writ
 
 Otherwise this module list page is much the same.
 
-However, when it comes to the individual module details page, we can move more responsibility to our JavaScript server page. Create a new file `/modules/[moduleCode]/+page.js` as follows:
+However, when it comes to the individual module details page, we can move more responsibility to our JavaScript server page. Create a new file `/modules/[moduleCode]/+page.server.js` as follows:
 
 ```javascript
 import { modules } from '$lib/data/modules.js';
@@ -619,7 +619,7 @@ We can further simplify our module details page, so assume that it will only be 
 
 We can make this assumption, since in our module details JavaScript server page, we can test to see if a module was NOT found, and if so, geneate a 404 Not Found error page.
 
-Let's add this check and 404 redirect to our module details JavaScript server page (`/modules/[moduleCode]/+page.js`):
+Let's add this check and 404 redirect to our module details JavaScript server page (`/modules/[moduleCode]/+page.server.js`):
 
 ```javascript
 import { error } from '@sveltejs/kit';
