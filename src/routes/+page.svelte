@@ -1,5 +1,4 @@
-<script>
-</script>
+
 
 <h1>MGW - my great website</h1>
 

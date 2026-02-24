@@ -3,12 +3,6 @@
     let module = data.module;
 </script>
 
-<nav>
-    <a href="/">home</a>
-    |
-    <a href="/modules">module list</a>
-</nav>
-<br>
 
 <h1>
     Details of module with code = {module.id}

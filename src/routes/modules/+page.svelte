@@ -3,12 +3,6 @@
     let modules = data.modules;
 </script>
 
-<nav>
-    <a href="/">home</a>
-    |
-    <a href="/modules">module list</a>
-</nav>
-<br>
 
 <h1>Welcome to Modulesite</h1>
 
